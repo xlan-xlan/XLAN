@@ -144,12 +144,11 @@ int Parseall(char *line, Job *job) {
         }
         job->Outre = 1;
         job->outfile  = tokens[OutRedirectionCheck + 1];
-        // check mislocated: no '|' after redir
+      
         for (int j = OutRedirectionCheck + 2; j < ntok; j++) {
             if (strcmp(tokens[j], "|") == 0) {
                 fprintf(stderr, "Error: mislocated output redirection\n");
-                return -1; outRedir
-            }
+                return -1; 
         }
        
         for (int j = OutRedirectionCheck; j + 2 < ntok; j++) {
@@ -211,7 +210,7 @@ int Parseall(char *line, Job *job) {
             pipe_pos[pipecount++] = i;
         }  
     }
-    // validate pipe placement
+
     for (int p = 0; p < pipecount; p++) {
         int pos = pipe_pos[p];
         if (pos == 0 || pos == ntok - 1) {
